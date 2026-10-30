@@ -2,7 +2,7 @@
 title: "Notes on the tooling"
 publishDate: 2026-01-25
 description: "What's underneath this template — Astro, Pagefind, Giscus, KaTeX — and why each piece is here."
-tags: [ tooling, internals, astro ]
+tags: [tooling, internals, astro]
 ---
 
 A short tour of the moving parts so you know what to keep and what to rip out. Most of the integrations below are
@@ -19,7 +19,7 @@ fully static and will deploy as a folder of HTML on any host — Cloudflare Page
 ## Markdown extensions
 
 | Plugin                                         | Why                                                                       |
-|------------------------------------------------|---------------------------------------------------------------------------|
+| ---------------------------------------------- | ------------------------------------------------------------------------- |
 | `remark-math` + `rehype-katex`                 | Inline and display math via `$…$` and `$$…$$`                             |
 | `remark-directive` + custom remark-admonitions | The `:::note` / `:::tip` / `:::caution` containers                        |
 | `astro-expressive-code`                        | Code blocks with syntax themes, copy button, terminal frames              |
@@ -41,8 +41,3 @@ enable. Custom themes live at `public/giscus-{light,dark}.css`.
 Both [GA4](https://analytics.google.com) and [Goatcounter](https://www.goatcounter.com) are pre-wired and load
 via [Partytown](https://partytown.qwik.dev/) so they run on a worker thread, not the main thread. Set the IDs in
 `siteConfig.analytics`. Leave them undefined to skip the scripts.
-
-## Webmentions
-
-Optional. Set `siteConfig.webmentions.link` and add a `WEBMENTION_API_KEY` to `.env`. Mentions are fetched
-from [webmention.io](https://webmention.io) at build time and cached locally.

@@ -30,25 +30,23 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 		}}
 	/>
 	<section class="work" aria-labelledby="work-label">
-		<div class="section-label" id="work-label">Showcase</div>
-		<p class="intro">
-			A handful of projects I've built.
-		</p>
+		<div class="section-label" id="work-label">
+			Showcase
+		</div>
+		<p class="intro">A handful of projects I've built.</p>
 		<ul class="work-list">
-			{
-				showcase.map((item) => (
-					<li>
-						<a href={item.href} rel="noreferrer" target="_blank">
-							<div class="head">
-								<span class="name">{item.name}</span>
-								<span class="stack">{item.stack}</span>
-								{item.badge && <span class="badge">{item.badge}</span>}
-							</div>
-							<p>{item.desc}</p>
-						</a>
-					</li>
-				))
-			}
+			{showcase.map((item) => (
+				<li>
+					<a href={item.href} rel="noreferrer" target="_blank">
+						<div class="head">
+							<span class="name">{item.name}</span>
+							<span class="stack">{item.stack}</span>
+							{item.badge && <span class="badge">{item.badge}</span>}
+						</div>
+						<p>{item.desc}</p>
+					</a>
+				</li>
+			))}
 		</ul>
 	</section>
 </PageLayout>

@@ -60,8 +60,10 @@ const avatarUrl = profile?.avatar ? absoluteUrl(profile.avatar, Astro.site) : un
 		}}
 	/>
 	<section class="about" aria-labelledby="about-label">
-		<div class="section-label" id="about-label">About</div>
-		<div class="bio">
+		<div class="section-label" id="about-label">
+			About
+		</div>
+		<div class="bio prose max-w-none">
 			<Content />
 		</div>
 	</section>
@@ -106,7 +108,9 @@ const avatarUrl = profile?.avatar ? absoluteUrl(profile.avatar, Astro.site) : un
 		text-decoration-color: hsl(var(--theme-text) / 0.35);
 		text-decoration-thickness: 1px;
 		text-underline-offset: 3px;
-		transition: color 0.2s ease, text-decoration-color 0.2s ease;
+		transition:
+			color 0.2s ease,
+			text-decoration-color 0.2s ease;
 	}
 	.bio :global(a:hover) {
 		color: hsl(var(--theme-accent));

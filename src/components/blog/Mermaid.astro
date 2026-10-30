@@ -1,17 +1,32 @@
 <script>
 	const diagrams = document.querySelectorAll("pre.mermaid");
 	if (diagrams.length) {
-		const observer = new IntersectionObserver((entries) => {
-			if (!entries.some((entry) => entry.isIntersecting)) return;
-			observer.disconnect();
-			import("../../scripts/mermaid").catch((error) => console.error("Could not load Mermaid", error));
-		}, { rootMargin: "200px" });
+		const observer = new IntersectionObserver(
+			(entries) => {
+				if (!entries.some((entry) => entry.isIntersecting)) return;
+				observer.disconnect();
+				import("../../scripts/pele").catch((error) => console.error("Could not load Pele", error));
+			},
+			{ rootMargin: "200px" },
+		);
 		diagrams.forEach((diagram) => observer.observe(diagram));
 	}
 </script>
 
 <style is:inline>
 	.post-article pre.mermaid {
+		--pele-bg: hsl(var(--theme-bg));
+		--pele-fg: hsl(var(--theme-text));
+		--pele-fg-on-light: hsl(var(--theme-text));
+		--pele-muted: hsl(var(--theme-text-muted));
+		--pele-line: hsl(var(--theme-text-muted));
+		--pele-surface: var(--paper);
+		--pele-surface-alt: var(--paper);
+		--pele-border: var(--faint);
+		--pele-accent: hsl(var(--theme-accent));
+		--pele-font: var(--font-sans);
+		--pele-font-mono: var(--font-mono);
+		--pele-radius: 4px;
 		margin: 2rem 0;
 		padding: 1.25rem;
 		overflow-x: auto;

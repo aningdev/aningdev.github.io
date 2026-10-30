@@ -1,2 +1,0 @@
-[build]
-  command = 'SITE_URL=$URL pnpm build'

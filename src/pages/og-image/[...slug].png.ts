@@ -1,7 +1,5 @@
-import JetBrainsMono from "@/assets/fonts/jetbrainsmono-regular.ttf";
-import NewsreaderItalic from "@/assets/fonts/newsreader-italic.ttf";
-import NewsreaderRegular from "@/assets/fonts/newsreader-regular.ttf";
-import NewsreaderSemiBold from "@/assets/fonts/newsreader-semibold.ttf";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { getAllPosts } from "@/data/post";
 import { siteConfig } from "@/site-config";
 import { formatBylineDate, formatEyebrowDate } from "@/utils/date";
@@ -11,12 +9,21 @@ import { render } from "astro:content";
 import satori, { type SatoriOptions } from "satori";
 import { html } from "satori-html";
 
+// Prerender bundles this route, so import.meta.url no longer points at src/.
+const fontFile = (filename: string) =>
+	readFileSync(join(process.cwd(), "src/assets/fonts", filename));
+
 const ogOptions: SatoriOptions = {
 	fonts: [
-		{ data: Buffer.from(NewsreaderRegular), name: "Newsreader", style: "normal", weight: 400 },
-		{ data: Buffer.from(NewsreaderSemiBold), name: "Newsreader", style: "normal", weight: 600 },
-		{ data: Buffer.from(NewsreaderItalic), name: "Newsreader", style: "italic", weight: 400 },
-		{ data: Buffer.from(JetBrainsMono), name: "JetBrains Mono", style: "normal", weight: 400 },
+		{ data: fontFile("newsreader-regular.ttf"), name: "Newsreader", style: "normal", weight: 400 },
+		{ data: fontFile("newsreader-semibold.ttf"), name: "Newsreader", style: "normal", weight: 600 },
+		{ data: fontFile("newsreader-italic.ttf"), name: "Newsreader", style: "italic", weight: 400 },
+		{
+			data: fontFile("jetbrainsmono-regular.ttf"),
+			name: "JetBrains Mono",
+			style: "normal",
+			weight: 400,
+		},
 	],
 	height: 630,
 	width: 1200,
@@ -38,16 +45,20 @@ const markup = (props: {
 	tagsLine: string;
 	host: string;
 }) =>
-	html`<div tw="flex flex-col w-full h-full px-20 py-16" style="background-color: #1a1715; font-family: Newsreader;">
-		<p tw="text-2xl mb-10 tracking-widest uppercase" style="font-family: JetBrains Mono; color: #c89761;">
+	html`<div
+		tw="flex flex-col w-full h-full px-20 py-16"
+		style="background-color: #1a1715; font-family: Newsreader;"
+	>
+		<p
+			tw="text-2xl mb-10 tracking-widest uppercase"
+			style="font-family: JetBrains Mono; color: #c89761;"
+		>
 			${props.eyebrow}
 		</p>
 		<h1 tw="${titleClass(props.title)}" style="color: #fbf6ec; font-weight: 600;">
 			${props.title}
 		</h1>
-		<p tw="text-2xl mb-4" style="font-family: JetBrains Mono; color: #a89c8a;">
-			${props.byline}
-		</p>
+		<p tw="text-2xl mb-4" style="font-family: JetBrains Mono; color: #a89c8a;">${props.byline}</p>
 		<p tw="text-xl tracking-wider uppercase" style="font-family: JetBrains Mono; color: #c89761;">
 			${props.tagsLine}
 		</p>
@@ -99,8 +110,7 @@ export async function getStaticPaths() {
 	const items = await Promise.all(
 		filtered.map(async (post) => {
 			const { remarkPluginFrontmatter } = await render(post);
-			const readingTime =
-				(remarkPluginFrontmatter as { minutesRead?: string })?.minutesRead ?? "";
+			const readingTime = (remarkPluginFrontmatter as { minutesRead?: string })?.minutesRead ?? "";
 			return {
 				params: { slug: post.id },
 				props: {

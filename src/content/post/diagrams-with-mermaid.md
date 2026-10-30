@@ -2,12 +2,12 @@
 title: "Diagrams with Mermaid"
 publishDate: 2026-02-15
 description: "Flowcharts, sequence diagrams, state machines and more, written as text in a mermaid code fence and drawn in the browser."
-tags: [ guide, writing, diagrams ]
+tags: [guide, writing, diagrams]
 ---
 
 Write a diagram as text in a code fence labelled `mermaid`, in any `.md` or `.mdx` post. No import, no component, no
-build step. The diagram is drawn in the browser, in the site's colours, and redrawn when you switch between light and
-dark.
+build step. [Pele](https://pele.run) draws it in the browser, in the site's colours. The colours follow the theme
+through CSS variables, so switching between light and dark does not redraw the diagram.
 
 ````markdown
 ```mermaid
@@ -90,19 +90,21 @@ erDiagram
     }
 ```
 
-Mermaid supports more diagram types than these, including class diagrams, Gantt charts, pie charts, mind maps and
-git graphs. See the [Mermaid documentation](https://mermaid.js.org/intro/) for the full syntax.
+The fence still uses Mermaid syntax. Pele draws the diagram types built into Mermaid 12.1, including class diagrams,
+Gantt charts, pie charts, mind maps and git graphs. See the [Mermaid documentation](https://mermaid.js.org/intro/) for
+the syntax.
 
 ## How it loads
 
 - Only posts that contain a diagram include the loader script. Other posts ship no diagram code at all.
-- Mermaid itself is downloaded from the site's own assets when the first diagram comes within 200px of the viewport,
-  so a diagram at the bottom of a long post costs nothing until the reader gets near it.
+- Pele is downloaded from the site's own assets when the first diagram comes within 200px of the viewport, so a
+  diagram at the bottom of a long post costs nothing until the reader gets near it.
 - Diagram source is excluded from site search, so the search index only holds the prose around it.
 
 ## Writing good diagrams
 
 - Add `accTitle` and `accDescr` to every diagram. Screen readers read them in place of the drawing.
-- Keep diagrams narrow. Small diagrams shrink to fit a phone screen; wide ones scroll sideways inside their frame.
+- Keep diagrams narrow. Pele refits the layout to a phone screen; a drawing that is still wider scrolls sideways
+  inside its frame.
 - Without JavaScript, or if the syntax is invalid, the source text stays on the page, so it should read sensibly on its
   own. Errors are logged to the browser console.

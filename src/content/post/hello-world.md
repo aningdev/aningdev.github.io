@@ -2,7 +2,7 @@
 title: "Hello, world"
 publishDate: 2026-03-01
 description: "A first post — and a quick tour of what the writing template can render."
-tags: [ intro, demo, guide ]
+tags: [intro, demo, guide]
 ---
 
 Welcome. This is the first post in your new blog. Replace it (or delete it) when you write your first real post.
@@ -30,7 +30,7 @@ button on hover, and a `min-light`/`min-dark` theme that follows the toggle:
 
 ```ts
 function greet(name: string): string {
-    return `Hello, ${name}!`;
+	return `Hello, ${name}!`;
 }
 ```
 
@@ -54,7 +54,7 @@ $$
 >
 > Multiple paragraphs work.
 
-You can use *emphasis* and **strong** the usual way.
+You can use _emphasis_ and **strong** the usual way.
 
 ## What's next
 

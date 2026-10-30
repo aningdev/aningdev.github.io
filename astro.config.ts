@@ -1,16 +1,11 @@
-import fs from "node:fs";
 import mdx from "@astrojs/mdx";
+import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
-import expressiveCode from "astro-expressive-code";
-import icon from "astro-icon";
-import robotsTxt from "astro-robots-txt";
-import webmanifest from "astro-webmanifest";
 import { unified } from "@astrojs/markdown-remark";
-import { defineConfig } from "astro/config";
-import { expressiveCodeOptions } from "./src/site.config";
-import { siteConfig } from "./src/site.config";
-import partytown from "@astrojs/partytown";
+import expressiveCode from "astro-expressive-code";
+import { defineConfig, svgoOptimizer } from "astro/config";
+import { expressiveCodeOptions, siteConfig } from "./src/site.config";
 
 import remarkDirective from "remark-directive";
 import remarkMath from "remark-math";
@@ -36,11 +31,6 @@ const externalPostIds = getExternalPostIds();
 export default defineConfig({
 	site: process.env.SITE_URL || "https://anjay-goel.github.io",
 	base: BASE_PATH,
-	image: {
-		domains: ["webmention.io"],
-	},
-	output: "static",
-	compressHTML: true,
 	build: {
 		inlineStylesheets: "always",
 	},
@@ -49,7 +39,6 @@ export default defineConfig({
 			? [partytown({ config: { forward: ["dataLayer.push"] } })]
 			: []),
 		expressiveCode(expressiveCodeOptions),
-		icon(),
 		sitemap({
 			changefreq: "weekly",
 			priority: 0.7,
@@ -67,45 +56,17 @@ export default defineConfig({
 			},
 		}),
 		mdx(),
-		robotsTxt(),
-		webmanifest({
-			// See: https://github.com/alextim/astro-lib/blob/main/packages/astro-webmanifest/README.md
-			name: siteConfig.title,
-			description: siteConfig.description,
-			lang: siteConfig.lang,
-			icon: "public/icon.png",
-			icons: [
-				{
-					src: "icons/apple-touch-icon.png",
-					sizes: "180x180",
-					type: "image/png",
-				},
-				{
-					src: "icons/icon-192.png",
-					sizes: "192x192",
-					type: "image/png",
-				},
-				{
-					src: "icons/icon-512.png",
-					sizes: "512x512",
-					type: "image/png",
-				},
-			],
-			start_url: START_URL,
-			background_color: "#f6f1e6",
-			theme_color: "#f6f1e6",
-			display: "standalone",
-			config: {
-				insertFaviconLinks: false,
-				insertThemeColorMeta: false,
-				insertManifestLink: false,
-			},
-		}),
 		(await import("@playform/compress")).default(),
 	],
 	// Astro 7 defaults to Sätteri; opt back into remark/rehype. Plugins go
 	// inside unified() only — top-level arrays would double-run them.
 	markdown: {
+		shikiConfig: {
+			themes: {
+				light: "github-light",
+				dark: "github-dark",
+			},
+		},
 		processor: unified({
 			rehypePlugins: [
 				rehypeUnwrapImages,
@@ -137,29 +98,22 @@ export default defineConfig({
 			},
 		}),
 	},
-	// https://docs.astro.build/en/guides/prefetch/
-	prefetch: true,
+
 	vite: {
 		optimizeDeps: {
-			include: ["mermaid"],
 			exclude: ["@resvg/resvg-js"],
 		},
-		plugins: [tailwindcss(), rawFonts([".ttf", ".woff"])],
+		plugins: [tailwindcss()],
+	},
+	prefetch: {
+		prefetchAll: true,
+		defaultStrategy: "viewport",
+	},
+	experimental: {
+		clientPrerender: true,
+		incrementalBuild: true,
+		parallelPrerender: true,
+		redirectPage: true,
+		svgOptimizer: svgoOptimizer(),
 	},
 });
-
-function rawFonts(ext: string[]) {
-	return {
-		name: "vite-plugin-raw-fonts",
-		// @ts-expect-error:next-line
-		transform(_, id) {
-			if (ext.some((e) => id.endsWith(e))) {
-				const buffer = fs.readFileSync(id);
-				return {
-					code: `export default ${JSON.stringify(buffer)}`,
-					map: null,
-				};
-			}
-		},
-	};
-}

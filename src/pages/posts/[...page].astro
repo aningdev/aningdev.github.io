@@ -43,26 +43,26 @@ const totalCount = page.total;
 
 <PageLayout meta={meta}>
 	<section class="writing" aria-labelledby="writing-label">
-		<div class="section-label" id="writing-label">Writing · {totalCount} posts</div>
+		<div class="section-label" id="writing-label">
+			Writing · {totalCount} posts
+		</div>
 		<div class="timeline">
 			<PostList posts={page.data} />
 		</div>
-		{
-			(paginationProps.prevUrl || paginationProps.nextUrl) && (
-				<nav class="pagination" aria-label="Pagination">
-					{paginationProps.prevUrl && (
-						<a class="pag-link prev" data-astro-prefetch href={paginationProps.prevUrl.url}>
-							{paginationProps.prevUrl.text}
-						</a>
-					)}
-					{paginationProps.nextUrl && (
-						<a class="pag-link next" data-astro-prefetch href={paginationProps.nextUrl.url}>
-							{paginationProps.nextUrl.text}
-						</a>
-					)}
-				</nav>
-			)
-		}
+		{(paginationProps.prevUrl || paginationProps.nextUrl) && (
+			<nav class="pagination" aria-label="Pagination">
+				{paginationProps.prevUrl && (
+					<a class="pag-link prev" data-astro-prefetch href={paginationProps.prevUrl.url}>
+						{paginationProps.prevUrl.text}
+					</a>
+				)}
+				{paginationProps.nextUrl && (
+					<a class="pag-link next" data-astro-prefetch href={paginationProps.nextUrl.url}>
+						{paginationProps.nextUrl.text}
+					</a>
+				)}
+			</nav>
+		)}
 	</section>
 </PageLayout>
 
@@ -91,7 +91,9 @@ const totalCount = page.total;
 		text-decoration-color: hsl(var(--theme-text) / 0.35);
 		text-decoration-thickness: 1px;
 		text-underline-offset: 3px;
-		transition: color 0.2s ease, text-decoration-color 0.2s ease;
+		transition:
+			color 0.2s ease,
+			text-decoration-color 0.2s ease;
 	}
 	.pag-link.prev {
 		margin-right: auto;

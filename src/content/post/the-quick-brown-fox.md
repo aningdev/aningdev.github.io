@@ -2,7 +2,7 @@
 title: "The quick brown fox"
 publishDate: 2026-01-05
 description: "A short post showing how typography looks across paragraphs, links, and quotes."
-tags: [ demo ]
+tags: [demo]
 ---
 
 The quick brown fox jumps over the lazy dog. The five boxing wizards jump quickly. Pack my box with five dozen liquor
@@ -28,6 +28,6 @@ Footnotes work via remark-gfm[^1]. They render at the bottom of the post and are
 
 ## Inline code & emphasis
 
-You can mix `inline code`, *italics*, **bold**, and ***both*** in the same line. ~~Strikethrough~~ works too.
+You can mix `inline code`, _italics_, **bold**, and _**both**_ in the same line. ~~Strikethrough~~ works too.
 
 Delete or replace this file once you've got real posts.

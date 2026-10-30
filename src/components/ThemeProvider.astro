@@ -31,8 +31,12 @@
 	document.addEventListener("theme-change", (e) => setTheme(e.detail.theme));
 	lightModePref.addEventListener("change", (e) => {
 		let stored = null;
-		try { stored = localStorage.getItem("theme"); } catch {}
+		try {
+			stored = localStorage.getItem("theme");
+		} catch {}
 		if (stored) return;
-		document.dispatchEvent(new CustomEvent("theme-change", { detail: { theme: e.matches ? "light" : "dark" } }));
+		document.dispatchEvent(
+			new CustomEvent("theme-change", { detail: { theme: e.matches ? "light" : "dark" } }),
+		);
 	});
 </script>

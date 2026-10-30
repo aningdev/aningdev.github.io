@@ -54,13 +54,17 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 		<div class="socials">
 			{profile?.github && (
 				<>
-					<a href={profile.github} rel="noreferrer" target="_blank">GitHub</a>
+					<a href={profile.github} rel="noreferrer" target="_blank">
+						GitHub
+					</a>
 					<span class="sep">·</span>
 				</>
 			)}
 			{profile?.linkedin && (
 				<>
-					<a href={profile.linkedin} rel="noreferrer" target="_blank">LinkedIn</a>
+					<a href={profile.linkedin} rel="noreferrer" target="_blank">
+						LinkedIn
+					</a>
 					<span class="sep">·</span>
 				</>
 			)}
@@ -75,49 +79,58 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 	</section>
 
 	<section class="writing" aria-labelledby="writing-label">
-		<div class="section-label" id="writing-label">Writing</div>
+		<div class="section-label" id="writing-label">
+			Writing
+		</div>
 		<div class="timeline">
-			{
-				featured && (
-					<div class="post featured" style="--i: 0">
-						<div class="post-rail">
-							<time class="post-date" datetime={getPostSortDate(featured).toISOString()}>
-								{formatRailDate(getPostSortDate(featured))}
-							</time>
-							<span class="post-dot" aria-hidden="true" />
-						</div>
-						<div class="post-body">
-							<div class="post-stamp">Latest · {formatStampDate(getPostSortDate(featured))}</div>
-							<h2 class="post-title">
-								<a class="post-cardlink" data-astro-prefetch href={getPostHref(featured)}>
-									{featured.data.title}</a>{featured.data.externalUrl && <ExternalIcon />}
-							</h2>
-							<p class="post-excerpt">{featured.data.description}</p>
-							{!!featured.data.tags?.length && (
-								<div class="post-meta">
-									{featured.data.tags.map((t, i) => (
-										<Fragment>{i > 0 && <span class="dot">·</span>}<a class="tag" href={withBase(`/tags/${encodeURIComponent(t)}/`)}>{t}</a></Fragment>
-									))}
-								</div>
-							)}
-						</div>
+			{featured && (
+				<div class="post featured" style="--i: 0">
+					<div class="post-rail">
+						<time class="post-date" datetime={getPostSortDate(featured).toISOString()}>
+							{formatRailDate(getPostSortDate(featured))}
+						</time>
+						<span class="post-dot" aria-hidden="true" />
 					</div>
-				)
-			}
+					<div class="post-body">
+						<div class="post-stamp">Latest · {formatStampDate(getPostSortDate(featured))}</div>
+						<h2 class="post-title">
+							<a class="post-cardlink" data-astro-prefetch href={getPostHref(featured)}>
+								{featured.data.title}
+							</a>
+							{featured.data.externalUrl && <ExternalIcon />}
+						</h2>
+						<p class="post-excerpt">{featured.data.description}</p>
+						{!!featured.data.tags?.length && (
+							<div class="post-meta">
+								{featured.data.tags.map((t, i) => (
+									<Fragment>
+										{i > 0 && <span class="dot">·</span>}
+										<a class="tag" href={withBase(`/tags/${encodeURIComponent(t)}/`)}>
+											{t}
+										</a>
+									</Fragment>
+								))}
+							</div>
+						)}
+					</div>
+				</div>
+			)}
 
 			<PostList posts={rest} startIndex={1} headingLevel="h3" />
 
 			<div class="archive-link" style={`--i: ${rest.length + 1}`}>
-				<a data-astro-prefetch href={withBase("/posts/")}
-					>View all {archiveCount} posts →</a
-				>
+				<a data-astro-prefetch href={withBase("/posts/")}>
+					View all {archiveCount} posts →
+				</a>
 			</div>
 		</div>
 	</section>
 
 	{showcase.length > 0 && (
 		<section class="work" aria-labelledby="work-label">
-			<div class="section-label" id="work-label">Showcase</div>
+			<div class="section-label" id="work-label">
+				Showcase
+			</div>
 			<ul class="work-list">
 				{showcase.map((item, idx) => (
 					<li style={`--i: ${idx + 1}`}>
@@ -162,7 +175,9 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 		text-decoration-color: hsl(var(--theme-text) / 0.35);
 		text-decoration-thickness: 1px;
 		text-underline-offset: 3px;
-		transition: color 0.2s ease, text-decoration-color 0.2s ease;
+		transition:
+			color 0.2s ease,
+			text-decoration-color 0.2s ease;
 	}
 	.socials a:hover {
 		color: hsl(var(--theme-accent));
@@ -278,7 +293,9 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 		text-decoration-color: hsl(var(--theme-text) / 0.35);
 		text-decoration-thickness: 1px;
 		text-underline-offset: 3px;
-		transition: color 0.2s ease, text-decoration-color 0.2s ease;
+		transition:
+			color 0.2s ease,
+			text-decoration-color 0.2s ease;
 	}
 	.archive-link a:hover {
 		color: hsl(var(--theme-accent));

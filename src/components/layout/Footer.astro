@@ -7,16 +7,23 @@ const year = new Date().getFullYear();
 
 <footer class="site-footer">
 	<div class="left">
-		<span>&copy; {year} {siteConfig.author}</span>
+		<span>
+			&copy; {year} {siteConfig.author}
+		</span>
 		{!siteConfig.hideThemeCredit && (
 			<span class="theme-credit">
-				🚀 Powered by <a href="https://github.com/anjay-goel/astro-sienna" rel="noopener">Astro Sienna</a>
+				🚀 Powered by{" "}
+				<a href="https://github.com/aningdev" rel="noopener">
+					Astro Sienna
+				</a>
 			</span>
 		)}
 	</div>
 	<div class="right">
 		<a href={withBase("/tags/")}>Tags</a>
-		<span class="sep" aria-hidden="true">·</span>
+		<span class="sep" aria-hidden="true">
+			·
+		</span>
 		<a href={withBase("/rss.xml")}>RSS</a>
 	</div>
 </footer>

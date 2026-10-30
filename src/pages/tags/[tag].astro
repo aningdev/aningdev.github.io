@@ -31,9 +31,15 @@ const meta = {
 <PageLayout meta={meta}>
 	<section class="tag-archive" aria-labelledby="tag-label">
 		<nav class="crumbs" aria-label="Breadcrumb">
-			<a data-astro-prefetch href={withBase("/tags/")}>Tags</a>
-			<span class="sep" aria-hidden="true">/</span>
-			<span class="current" aria-current="page">#{tag}</span>
+			<a data-astro-prefetch href={withBase("/tags/")}>
+				Tags
+			</a>
+			<span class="sep" aria-hidden="true">
+				/
+			</span>
+			<span class="current" aria-current="page">
+				#{tag}
+			</span>
 		</nav>
 		<div class="section-label" id="tag-label">
 			#{tag} · {count} {count === 1 ? "post" : "posts"}
@@ -62,7 +68,9 @@ const meta = {
 		text-decoration-color: hsl(var(--theme-text) / 0.35);
 		text-decoration-thickness: 1px;
 		text-underline-offset: 3px;
-		transition: color 0.2s ease, text-decoration-color 0.2s ease;
+		transition:
+			color 0.2s ease,
+			text-decoration-color 0.2s ease;
 	}
 	.crumbs a:hover {
 		color: hsl(var(--theme-accent));

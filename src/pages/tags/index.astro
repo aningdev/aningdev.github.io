@@ -14,18 +14,18 @@ const meta = {
 
 <PageLayout meta={meta}>
 	<section class="tags-index" aria-labelledby="tags-label">
-		<div class="section-label" id="tags-label">Tags · {tags.length}</div>
+		<div class="section-label" id="tags-label">
+			Tags · {tags.length}
+		</div>
 		<ul class="tag-run">
-			{
-				tags.map(([tag, count]) => (
-					<li>
-						<a data-astro-prefetch href={withBase(`/tags/${encodeURIComponent(tag)}/`)}>
-							<span class="name">{tag}</span>
-							<span class="count">{count}</span>
-						</a>
-					</li>
-				))
-			}
+			{tags.map(([tag, count]) => (
+				<li>
+					<a data-astro-prefetch href={withBase(`/tags/${encodeURIComponent(tag)}/`)}>
+						<span class="name">{tag}</span>
+						<span class="count">{count}</span>
+					</a>
+				</li>
+			))}
 		</ul>
 	</section>
 </PageLayout>

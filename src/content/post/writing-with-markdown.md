@@ -2,7 +2,7 @@
 title: "Writing with markdown"
 publishDate: 2026-02-20
 description: "A short guide to the markdown features wired into this template — cover images, code, math, footnotes, and admonitions."
-tags: [ guide, writing, markdown ]
+tags: [guide, writing, markdown]
 coverImage:
   src: ./_assets/cover-arcs.jpg
   alt: "Concentric earth-tone arcs rising from a horizon line, like an abstract risograph sunrise."
@@ -18,7 +18,7 @@ Zod — see `src/content.config.ts` for the schema.
 title: "Your post title"
 publishDate: 2026-01-12
 description: "One-sentence summary used in cards, social previews, and meta tags."
-tags: [ tag-one, tag-two ]
+tags: [tag-one, tag-two]
 # updatedDate: 2026-02-01      # optional — shown as "Updated …" on the post
 # draft: true                   # excludes the post from production builds
 # coverImage:                   # optional — appears between header and body
@@ -54,15 +54,15 @@ loads eagerly with high fetch priority, since it sits above the fold.
 ## Tables
 
 | Feature    | Default                  | Override                                           |
-|------------|--------------------------|----------------------------------------------------|
+| ---------- | ------------------------ | -------------------------------------------------- |
 | Code theme | `min-light` / `min-dark` | `expressiveCodeOptions.themes` in `site.config.ts` |
 | Body font  | Newsreader               | `--font-serif` in `global.css`                     |
 | Mono font  | JetBrains Mono           | `--font-mono` in `global.css`                      |
 
 ## Diagrams
 
-A code fence labelled `mermaid` becomes a diagram. It follows the light/dark theme, and the renderer only loads when
-a diagram gets close to the viewport. Posts without diagrams don't load Mermaid.
+A code fence labelled `mermaid` becomes a diagram. Pele draws it, the colours follow the light/dark theme, and the
+renderer only loads when a diagram gets close to the viewport. Posts without diagrams don't load it.
 
 ```mermaid
 flowchart LR
