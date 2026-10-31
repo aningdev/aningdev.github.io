@@ -1,7 +1,7 @@
 /* `@import` must precede all other rules. */
-@import "@fontsource-variable/newsreader/wght.css";
-@import "@fontsource-variable/newsreader/wght-italic.css";
-@import "@fontsource-variable/inter/wght.css";
+/* LXGW WenKai (霞鹜文楷) — unicode-range subsetted CJK + Latin via @chinese-fonts */
+@import "@chinese-fonts/lxgwwenkai/dist/LXGWWenKai-Regular/result.css";
+@import "@chinese-fonts/lxgwwenkai/dist/LXGWWenKai-Medium/result.css";
 @import "@fontsource-variable/jetbrains-mono/wght.css";
 @import "tailwindcss";
 
@@ -11,8 +11,10 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme {
-  --font-sans: "Inter Variable", -apple-system, system-ui, sans-serif;
-  --font-serif: "Newsreader Variable", "Iowan Old Style", Georgia, serif;
+  --font-sans:
+    "LXGW WenKai", "霞鹜文楷", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui,
+    sans-serif;
+  --font-serif: "LXGW WenKai", "霞鹜文楷", "Songti SC", "SimSun", Georgia, serif;
   --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, monospace;
 }
 
