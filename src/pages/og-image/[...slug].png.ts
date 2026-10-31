@@ -18,6 +18,19 @@ const ogOptions: SatoriOptions = {
     { data: fontFile("newsreader-regular.ttf"), name: "Newsreader", style: "normal", weight: 400 },
     { data: fontFile("newsreader-semibold.ttf"), name: "Newsreader", style: "normal", weight: 600 },
     { data: fontFile("newsreader-italic.ttf"), name: "Newsreader", style: "italic", weight: 400 },
+    // CJK fallbacks (subset) — referenced after Newsreader / JetBrains Mono in font-family stacks.
+    {
+      data: fontFile("lxgw-wenkai-regular-og.ttf"),
+      name: "LXGW WenKai",
+      style: "normal",
+      weight: 400,
+    },
+    {
+      data: fontFile("lxgw-wenkai-medium-og.ttf"),
+      name: "LXGW WenKai",
+      style: "normal",
+      weight: 600,
+    },
     {
       data: fontFile("jetbrainsmono-regular.ttf"),
       name: "JetBrains Mono",
@@ -47,24 +60,32 @@ const markup = (props: {
 }) =>
   html`<div
     tw="flex flex-col w-full h-full px-20 py-16"
-    style="background-color: #1a1715; font-family: Newsreader;"
+    style="background-color: #1a1715; font-family: Newsreader, 'LXGW WenKai';"
   >
     <p
       tw="text-2xl mb-10 tracking-widest uppercase"
-      style="font-family: JetBrains Mono; color: #c89761;"
+      style="font-family: 'JetBrains Mono', 'LXGW WenKai'; color: #c89761;"
     >
       ${props.eyebrow}
     </p>
     <h1 tw="${titleClass(props.title)}" style="color: #fbf6ec; font-weight: 600;">
       ${props.title}
     </h1>
-    <p tw="text-2xl mb-4" style="font-family: JetBrains Mono; color: #a89c8a;">${props.byline}</p>
-    <p tw="text-xl tracking-wider uppercase" style="font-family: JetBrains Mono; color: #c89761;">
+    <p tw="text-2xl mb-4" style="font-family: 'JetBrains Mono', 'LXGW WenKai'; color: #a89c8a;">
+      ${props.byline}
+    </p>
+    <p
+      tw="text-xl tracking-wider uppercase"
+      style="font-family: 'JetBrains Mono', 'LXGW WenKai'; color: #c89761;"
+    >
       ${props.tagsLine}
     </p>
     <div tw="flex flex-1"></div>
     <div tw="flex justify-end w-full">
-      <p tw="text-lg tracking-wide" style="font-family: JetBrains Mono; color: #6b5e4f;">
+      <p
+        tw="text-lg tracking-wide"
+        style="font-family: 'JetBrains Mono', 'LXGW WenKai'; color: #6b5e4f;"
+      >
         ${props.host}
       </p>
     </div>
