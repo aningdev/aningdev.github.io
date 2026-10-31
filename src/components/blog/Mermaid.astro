@@ -1,48 +1,48 @@
 <script>
-	const diagrams = document.querySelectorAll("pre.mermaid");
-	if (diagrams.length) {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				if (!entries.some((entry) => entry.isIntersecting)) return;
-				observer.disconnect();
-				import("../../scripts/pele").catch((error) => console.error("Could not load Pele", error));
-			},
-			{ rootMargin: "200px" },
-		);
-		diagrams.forEach((diagram) => observer.observe(diagram));
-	}
+  const diagrams = document.querySelectorAll("pre.mermaid");
+  if (diagrams.length) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        observer.disconnect();
+        import("../../scripts/pele").catch((error) => console.error("Could not load Pele", error));
+      },
+      { rootMargin: "200px" },
+    );
+    diagrams.forEach((diagram) => observer.observe(diagram));
+  }
 </script>
 
 <style is:inline>
-	.post-article pre.mermaid {
-		--pele-bg: hsl(var(--theme-bg));
-		--pele-fg: hsl(var(--theme-text));
-		--pele-fg-on-light: hsl(var(--theme-text));
-		--pele-muted: hsl(var(--theme-text-muted));
-		--pele-line: hsl(var(--theme-text-muted));
-		--pele-surface: var(--paper);
-		--pele-surface-alt: var(--paper);
-		--pele-border: var(--faint);
-		--pele-accent: hsl(var(--theme-accent));
-		--pele-font: var(--font-sans);
-		--pele-font-mono: var(--font-mono);
-		--pele-radius: 4px;
-		margin: 2rem 0;
-		padding: 1.25rem;
-		overflow-x: auto;
-		background: transparent;
-		border: 1px solid hsl(var(--theme-text) / 0.15);
-		border-radius: 0.5rem;
-		text-align: center;
-	}
+  .post-article pre.mermaid {
+    --pele-bg: hsl(var(--theme-bg));
+    --pele-fg: hsl(var(--theme-text));
+    --pele-fg-on-light: hsl(var(--theme-text));
+    --pele-muted: hsl(var(--theme-text-muted));
+    --pele-line: hsl(var(--theme-text-muted));
+    --pele-surface: var(--paper);
+    --pele-surface-alt: var(--paper);
+    --pele-border: var(--faint);
+    --pele-accent: hsl(var(--theme-accent));
+    --pele-font: var(--font-sans);
+    --pele-font-mono: var(--font-mono);
+    --pele-radius: 4px;
+    margin: 2rem 0;
+    padding: 1.25rem;
+    overflow-x: auto;
+    background: transparent;
+    border: 1px solid hsl(var(--theme-text) / 0.15);
+    border-radius: 0.5rem;
+    text-align: center;
+  }
 
-	.post-article pre.mermaid[data-rendered] {
-		white-space: normal;
-	}
+  .post-article pre.mermaid[data-rendered] {
+    white-space: normal;
+  }
 
-	.post-article pre.mermaid svg {
-		display: block;
-		margin-inline: auto;
-		height: auto;
-	}
+  .post-article pre.mermaid svg {
+    display: block;
+    margin-inline: auto;
+    height: auto;
+  }
 </style>

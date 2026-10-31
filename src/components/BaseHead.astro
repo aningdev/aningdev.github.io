@@ -25,9 +25,7 @@ const goatcounter = analytics?.goatcounterUrl;
 <title>{siteTitle}</title>
 
 <link href={withBase("/icon.png")} rel="icon" type="image/png" />
-{
-	import.meta.env.PROD && <link rel="sitemap" href={withBase("/sitemap-index.xml")} />
-}
+{import.meta.env.PROD && <link rel="sitemap" href={withBase("/sitemap-index.xml")} />}
 
 {noindex ? <meta content="noindex" name="robots" /> : <link href={canonicalURL} rel="canonical" />}
 
@@ -50,11 +48,11 @@ const goatcounter = analytics?.goatcounterUrl;
 <meta content="1200" property="og:image:width" />
 <meta content="630" property="og:image:height" />
 {articleDate && (
-	<>
-		<meta content={siteConfig.author} property="article:author" />
-		<meta content={articleDate} property="article:published_time" />
-		{articleModified && <meta content={articleModified} property="article:modified_time" />}
-	</>
+  <>
+    <meta content={siteConfig.author} property="article:author" />
+    <meta content={articleDate} property="article:published_time" />
+    {articleModified && <meta content={articleModified} property="article:modified_time" />}
+  </>
 )}
 
 <meta content="summary_large_image" name="twitter:card" />
@@ -64,34 +62,34 @@ const goatcounter = analytics?.goatcounterUrl;
 <meta content={socialImageURL} name="twitter:image" />
 
 <link
-	href={withBase("/rss.xml")}
-	rel="alternate"
-	title={siteConfig.title}
-	type="application/rss+xml"
+  href={withBase("/rss.xml")}
+  rel="alternate"
+  title={siteConfig.title}
+  type="application/rss+xml"
 />
 
 <meta content={Astro.generator} name="generator" />
 
 {gaId && (
-	<>
-		<script
-			is:inline
-			type="text/partytown"
-			async
-			src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-		></script>
-		<script
-			is:inline
-			type="text/partytown"
-			set:html={`
+  <>
+    <script
+      is:inline
+      type="text/partytown"
+      async
+      src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+    ></script>
+    <script
+      is:inline
+      type="text/partytown"
+      set:html={`
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', '${gaId}');
 `}
-		></script>
-	</>
+    ></script>
+  </>
 )}
 {goatcounter && (
-	<script is:inline data-goatcounter={goatcounter} async src="//gc.zgo.at/count.js"></script>
+  <script is:inline data-goatcounter={goatcounter} async src="//gc.zgo.at/count.js"></script>
 )}

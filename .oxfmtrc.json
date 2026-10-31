@@ -1,9 +1,7 @@
 {
-	"$schema": "./node_modules/oxfmt/configuration_schema.json",
-	"useTabs": true,
-	"proseWrap": "preserve",
-	"astro": true,
-	"sortTailwindcss": {
-		"stylesheet": "./src/styles/global.css"
-	}
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "astro": true,
+  "sortTailwindcss": {
+    "stylesheet": "./src/styles/global.css"
+  }
 }

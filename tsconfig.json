@@ -1,16 +1,22 @@
 {
-	"extends": "astro/tsconfigs/strict",
-	"include": [".astro/types.d.ts", "**/*"],
-	"exclude": ["dist"],
-	"compilerOptions": {
-		"paths": {
-			"@/assets/*": ["./src/assets/*"],
-			"@/components/*": ["./src/components/*"],
-			"@/data/*": ["./src/data/*"],
-			"@/layouts/*": ["./src/layouts/*"],
-			"@/utils/*": ["./src/utils/*"],
-			"@/types": ["./src/types.ts"],
-			"@/site-config": ["./src/site.config.ts"]
-		}
-	}
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
+  "compilerOptions": {
+    "paths": {
+      "@/assets/*": ["./src/assets/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/data/*": ["./src/data/*"],
+      "@/layouts/*": ["./src/layouts/*"],
+      "@/utils/*": ["./src/utils/*"],
+      "@/types": ["./src/types.ts"],
+      "@/site-config": ["./src/site.config.ts"]
+    }
+  },
+  "contentMappers": [
+    {
+      "package": "@astrojs/ts-content-mapper",
+      "extensions": [".astro"]
+    }
+  ]
 }

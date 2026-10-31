@@ -30,7 +30,7 @@ button on hover, and a `min-light`/`min-dark` theme that follows the toggle:
 
 ```ts
 function greet(name: string): string {
-	return `Hello, ${name}!`;
+  return `Hello, ${name}!`;
 }
 ```
 
