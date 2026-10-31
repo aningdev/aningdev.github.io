@@ -2,7 +2,7 @@
 import { showcase } from "@/data/showcase";
 import PageLayout from "@/layouts/Base.astro";
 import { absoluteUrl } from "@/utils/path";
-import { Schema } from "astro-seo-schema";
+import Schema from "@/components/Schema.astro";
 
 const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 ---

@@ -1,0 +1,44 @@
+---
+/**
+ * JSON-LD script tag. Replaces astro-seo-schema, whose .astro sources fail
+ * type-check under TypeScript 7.1 content mappers (union vs JsonLd overloads).
+ */
+type Props = {
+  item: Record<string, unknown>;
+  space?: string | number;
+};
+
+const { item, space } = Astro.props;
+
+const ESCAPE: Record<string, string> = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+  "'": "&apos;",
+};
+const ESCAPE_RE = /[&<>"']/g;
+
+function jsonLd(value: unknown, indent?: string | number): string {
+  return JSON.stringify(
+    value,
+    (_key, v) => {
+      switch (typeof v) {
+        case "object":
+          return v === null ? undefined : v;
+        case "number":
+        case "boolean":
+        case "bigint":
+          return v;
+        case "string":
+          return v.replace(ESCAPE_RE, (c) => ESCAPE[c]!);
+        default:
+          return undefined;
+      }
+    },
+    indent,
+  );
+}
+---
+
+<script type="application/ld+json" set:html={jsonLd(item, space)} />

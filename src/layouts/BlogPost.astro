@@ -11,7 +11,7 @@ import { formatBylineDate, formatEyebrowDate } from "@/utils/date";
 import { absoluteUrl, withBase } from "@/utils/path";
 
 import BaseLayout from "./Base.astro";
-import { Schema } from "astro-seo-schema";
+import Schema from "@/components/Schema.astro";
 
 interface Props {
   post: CollectionEntry<"post">;

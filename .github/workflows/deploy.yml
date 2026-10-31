@@ -33,7 +33,7 @@ jobs:
         with:
           enablement: true
 
-      # `bun run build` runs `astro check && astro build`, then the
+      # `bun run build` runs `bun check && astro build`, then the
       # `postbuild` script runs pagefind over dist/.
       - run: bun run build
         env:

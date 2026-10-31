@@ -7,7 +7,7 @@ import PageLayout from "@/layouts/Base.astro";
 import { siteConfig } from "@/site-config";
 import { formatRailDate, formatStampDate } from "@/utils/date";
 import { absoluteUrl, withBase } from "@/utils/path";
-import { Schema } from "astro-seo-schema";
+import Schema from "@/components/Schema.astro";
 
 const allPosts = await getAllPosts();
 const allPostsByDate = sortMDByDate(allPosts);

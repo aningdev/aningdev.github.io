@@ -10,7 +10,7 @@
     "build": "bun check && astro build",
     "postbuild": "pagefind --site dist",
     "preview": "astro preview",
-    "check": "oxfmt",
+    "check": "oxfmt && astro sync && tsc --noEmit --runExternalCode",
     "test": "node --experimental-strip-types --test tests/*.test.mjs"
   },
   "dependencies": {
@@ -25,7 +25,6 @@
     "@playform/compress": "^0.2.5",
     "astro": "^7.4.4",
     "astro-expressive-code": "^0.44.3",
-    "astro-seo-schema": "^7.0.1",
     "hastscript": "^9.0.3",
     "katex": "^0.19.1",
     "mdast-util-directive": "^3.2.0",
@@ -44,7 +43,6 @@
     "unist-util-visit": "^5.2.0"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.12",
     "@astrojs/compiler-rs": "^0.5.2",
     "@astrojs/ts-content-mapper": "^0.2.0",
     "@resvg/resvg-js": "^2.6.2",
@@ -59,6 +57,6 @@
     "reading-time": "^1.5.0",
     "rehype-unwrap-images": "^1.0.0",
     "tailwindcss": "^4.3.3",
-    "typescript": "^7.0.2"
+    "typescript": "7.1.0-beta"
   }
 }

@@ -3,7 +3,7 @@ import { getEntry, render } from "astro:content";
 import PageLayout from "@/layouts/Base.astro";
 import { siteConfig } from "@/site-config";
 import { absoluteUrl } from "@/utils/path";
-import { Schema } from "astro-seo-schema";
+import Schema from "@/components/Schema.astro";
 
 const entry = await getEntry("page", "about");
 if (!entry) throw new Error("Missing src/content/page/about.md");
