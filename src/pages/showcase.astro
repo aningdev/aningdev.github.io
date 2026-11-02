@@ -29,10 +29,7 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
       ],
     }}
   />
-  <section class="work" aria-labelledby="work-label">
-    <div class="section-label" id="work-label">
-      Showcase
-    </div>
+  <section class="work">
     <p class="intro">A handful of projects I've built.</p>
     <ul class="work-list">
       {showcase.map((item) => (
