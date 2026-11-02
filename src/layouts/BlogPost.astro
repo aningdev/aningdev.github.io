@@ -232,7 +232,7 @@ const giscusThemes = import.meta.env.PROD
   .post-title :global(em) {
     font-style: italic;
     color: hsl(var(--theme-accent));
-    font-weight: 400;
+    font-weight: var(--font-weight-body);
   }
 
   .byline {
@@ -493,7 +493,7 @@ const giscusThemes = import.meta.env.PROD
   }
   .post-article p strong,
   .post-article strong {
-    font-weight: 500;
+    font-weight: var(--font-weight-strong);
     color: hsl(var(--theme-text));
   }
 

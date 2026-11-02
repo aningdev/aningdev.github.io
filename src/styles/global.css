@@ -1,6 +1,6 @@
 /* `@import` must precede all other rules. */
-/* LXGW WenKai (霞鹜文楷) — unicode-range subsetted CJK + Latin via @chinese-fonts */
-@import "@chinese-fonts/lxgwwenkai/dist/LXGWWenKai-Regular/result.css";
+/* LXGW WenKai (霞鹜文楷) — Medium as site default. Upstream ships Light/Regular/Medium
+   only (Bold was renamed to Medium in v1.500); no heavier real cut exists for bold. */
 @import "@chinese-fonts/lxgwwenkai/dist/LXGWWenKai-Medium/result.css";
 @import "@fontsource-variable/jetbrains-mono/wght.css";
 @import "tailwindcss";
@@ -11,10 +11,12 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme {
+  /* Package registers Medium as family "LXGW WenKai Medium" at weight 500. */
   --font-sans:
-    "LXGW WenKai", "霞鹜文楷", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui,
-    sans-serif;
-  --font-serif: "LXGW WenKai", "霞鹜文楷", "Songti SC", "SimSun", Georgia, serif;
+    "LXGW WenKai Medium", "LXGW WenKai", "霞鹜文楷", "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", system-ui, sans-serif;
+  --font-serif:
+    "LXGW WenKai Medium", "LXGW WenKai", "霞鹜文楷", "Songti SC", "SimSun", Georgia, serif;
   --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, monospace;
 }
 
@@ -48,6 +50,17 @@
     --reading-width: 64ch; /* article body & long prose blocks */
     --rail-width: 110px; /* left date column on timeline lists */
     --rail-gap: 36px; /* gap between rail and post body */
+
+    /* WenKai weight map (avoid Tailwind's --font-weight-normal/bold tokens).
+       Medium (500) default; bold/700 is one step up. No Bold cut ships upstream
+       (renamed to Medium in LXGW v1.500) — 700 synthesizes from Medium. */
+    --font-weight-body: 500;
+    --font-weight-strong: 700;
+  }
+
+  strong,
+  b {
+    font-weight: var(--font-weight-strong);
   }
 
   :root,

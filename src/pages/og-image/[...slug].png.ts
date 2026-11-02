@@ -18,18 +18,25 @@ const ogOptions: SatoriOptions = {
     { data: fontFile("newsreader-regular.ttf"), name: "Newsreader", style: "normal", weight: 400 },
     { data: fontFile("newsreader-semibold.ttf"), name: "Newsreader", style: "normal", weight: 600 },
     { data: fontFile("newsreader-italic.ttf"), name: "Newsreader", style: "italic", weight: 400 },
-    // CJK fallbacks (subset) — referenced after Newsreader / JetBrains Mono in font-family stacks.
+    // CJK fallbacks (subset) — Medium is the site default and heaviest upstream cut.
+    // Register the same file at 500/600/700 so Satori can match body and bold requests.
     {
-      data: fontFile("lxgw-wenkai-regular-og.ttf"),
+      data: fontFile("lxgw-wenkai-medium-og.ttf"),
       name: "LXGW WenKai",
       style: "normal",
-      weight: 400,
+      weight: 500,
     },
     {
       data: fontFile("lxgw-wenkai-medium-og.ttf"),
       name: "LXGW WenKai",
       style: "normal",
       weight: 600,
+    },
+    {
+      data: fontFile("lxgw-wenkai-medium-og.ttf"),
+      name: "LXGW WenKai",
+      style: "normal",
+      weight: 700,
     },
     {
       data: fontFile("jetbrainsmono-regular.ttf"),

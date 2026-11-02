@@ -143,7 +143,9 @@ main input,
 main textarea,
 main button,
 main select {
-  font-family: "LXGW WenKai", "霞鹜文楷", "Songti SC", "SimSun", Georgia, serif;
+  font-family:
+    "LXGW WenKai Medium", "LXGW WenKai", "霞鹜文楷", "Songti SC", "SimSun", Georgia, serif;
+  font-weight: 500;
 }
 main code,
 main pre,
